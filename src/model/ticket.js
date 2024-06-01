@@ -15,7 +15,7 @@ const ticketSchema = new mongoose.Schema({
     status:{
         type:String
     },
-    raiseDate:{
+    date:{
         type:String
     }
 })

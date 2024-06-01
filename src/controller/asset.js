@@ -22,7 +22,7 @@ const createNewAsset = async (req, res) => {
             savedAsset
         })
     } catch (error) {
-        console.error('Error creating user:', error);
+        console.error('Error creating asset:', error);
         if (error.code === 11000) {
             return res.status(409).json({ error: 'Duplicate key error', details: 'AssetId or SerialNo already exists' });
         }
@@ -34,6 +34,7 @@ const createNewAsset = async (req, res) => {
 const updateAssetById = async (req, res) => {
     try {
         const id = req.params.id
+        console.log(req.body);
         const assetUpdate = await Asset.findByIdAndUpdate({ _id: id }, req.body.values, { new: true, upsert: true });
         res.status(201).json({ assetUpdate })
     }
